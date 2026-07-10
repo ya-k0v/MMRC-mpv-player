@@ -36,7 +36,17 @@ from urllib.parse import quote
 from threading import Lock, Event
 
 # ── Константы ───────────────────────────────────────────────────────────
-APP_VERSION = '3.4.0'  # default; overridden by server /api/version
+import json as _json
+from pathlib import Path as _Path
+
+def _read_version():
+    version_file = _Path(__file__).parent / "version.json"
+    if version_file.exists():
+        with open(version_file) as f:
+            return _json.load(f).get("version", "1.0.0")
+    return "1.0.0"
+
+APP_VERSION = _read_version()
 
 # ── Логгер ──────────────────────────────────────────────────────────────
 logger = logging.getLogger('mpv_client')
