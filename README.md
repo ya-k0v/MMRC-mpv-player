@@ -26,7 +26,7 @@
 ### Автоматическая (Raspberry Pi / Ubuntu)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/ya-k0v/MMRC-mpv-player/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/ya-k0v/MMRC-mpv-player/main/install.sh | bash -s -- --server http://192.168.1.100 --device mpv-001
 ```
 
 ### Ручная

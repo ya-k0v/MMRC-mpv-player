@@ -3,7 +3,7 @@ set -e
 
 # ── Конфигурация ──────────────────────────────────────────────────────
 INSTALL_DIR="$HOME/videocontrol-mpv"
-REPO_URL="https://raw.githubusercontent.com/ya-k0v/MMRC/v340/clients/mpv"
+REPO_URL="https://raw.githubusercontent.com/ya-k0v/MMRC-mpv-player/main"
 
 # ── Парсинг аргументов ─────────────────────────────────────────────────
 SERVER_URL=""

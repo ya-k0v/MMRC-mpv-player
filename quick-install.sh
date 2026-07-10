@@ -3,7 +3,7 @@
 set -e
 
 INSTALL_DIR="$HOME/videocontrol-mpv"
-REPO_URL="https://raw.githubusercontent.com/ya-k0v/MMRC/v340/clients/mpv"
+REPO_URL="https://raw.githubusercontent.com/ya-k0v/MMRC-mpv-player/main"
 SERVER_URL=""
 DEVICE_ID=""
 INSTALL_SYSTEMD=true
