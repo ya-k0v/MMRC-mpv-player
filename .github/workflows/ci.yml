@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main, release/*]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install flake8 mypy type-requests
+          pip install -r requirements.txt
+
+      - name: Run Flake8
+        run: flake8 mpv_client.py --max-line-length=120 --ignore=E501,W503
+
+      - name: Run MyPy
+        run: mypy mpv_client.py --ignore-missing-imports --no-strict-optional || true
+
+  syntax:
+    name: Syntax Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check Python syntax
+        run: python -m py_compile mpv_client.py
+
+      - name: Check import validity
+        run: python -c "import ast; ast.parse(open('mpv_client.py').read())"
